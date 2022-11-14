@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jester Juke</title>
+</head>
+<body>
+    <p id="textstuff"></p>
+    <p id="id-text"></p>
+
+    <h3 id="title">Connect to someone</h3>
+    <textarea id="id-textarea"></textarea>
+    <button id="submit-button" onclick="submitButton()">Connect to peer!</button>
+
+    <div style="display: none;" id="peer-div">
+        <h3>Your peer's message</h3>
+        <h2 id="peer-message"></h2>
+    </div>
+
+    <div style="display: none;" id="peer-div">
+        <h3>Your message</h3>
+        <h2 id="user-message"></h2>
+    </div>
+
+    <script src="https://unpkg.com/peerjs@1.3.2/dist/peerjs.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
