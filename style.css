@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(2,3,61);
+    background: linear-gradient(135deg, rgba(2,3,61,1) 0%, rgba(8,33,112,1) 16%, rgba(5,67,88,1) 33%, rgba(4,144,137,1) 63%, rgba(42,180,15,1) 100%);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+textarea {
+    border-radius: 4px;
+    resize: none;
+    background: rgba(71, 207, 225, 0.4);
+    background: rgba(71, 207, 225, 0.4);
+    border: 2px solid rgba(71, 207, 225, 0.7);
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.title-div {
+    display: flex; 
+    align-items: center; 
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#peer-div {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 50%;
+    min-width: 50%;
+}
+
+.btn {
+  background-color: #0095ff;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #07c;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.btn:active {
+  background-color: #0064bd;
+  box-shadow: none;
+}
+#user-div {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 50%;
+    min-width: 50%;
+}
+#call-button {
+    display: none;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.message-box {
+    width: 70%;
+    background-color: rgba(89, 219, 101, 0.5);
+    border: 2px solid rgba(44, 82, 48, 0.7);
+    border-radius: 8px;
+}
+.message-text {
+    word-break: break-word;
+    max-width: 95%;
+    text-align: center;
+}

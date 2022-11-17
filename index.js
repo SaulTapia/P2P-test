@@ -19,12 +19,59 @@ peer.on('connection', function(conn_) {
     conn = conn_;
     make_connection();
 });
+const callAudio = document.createElement('audio')
+var beingCalled = false;
 
+var callBtn = document.getElementById('call-button');
+var incomingCall = new Audio();
+incomingCall.autoplay = true;
+
+peer.on("call", (call) => {
+    beingCalled = true;
+    incomingCall = call;
+    callBtn.textContent = "Answer Call"
+    console.log("yup, got a call")
+    console.log("got a call")
+    console.log("aha, a call")
+});
+
+function makeCall() {
+    if(beingCalled) {
+        navigator.mediaDevices.getUserMedia(
+            { audio: true }).then(stream => {
+                incomingCall.answer(stream);
+                incomingCall.on("stream", (remoteStream) => {                
+                callAudio.srcObject = remoteStream;
+                callAudio.play()
+            });
+            })
+            
+        ;
+        return;
+    }
+    console.log("calling peer with id " + conn.peer)
+    navigator.mediaDevices.getUserMedia(
+        { audio: true }).then(stream => {
+            console.log(stream)
+            const call = peer.call(conn.peer, stream);
+            call.on("stream", (remoteStream) => {
+                callAudio.srcObject = remoteStream;
+                callAudio.play()
+            });
+        })
+        
+    ;
+}
+
+
+
+var userMessage = document.getElementById('user-message');
 function submitButton()
 {
     if(connected)
     {
         conn.send(textarea.value);
+        userMessage.textContent = textarea.value
     }
     else
     {
@@ -36,6 +83,7 @@ function submitButton()
         console.log("Finished connection...");
         make_connection();
     }
+    textarea.value = ""
 }
 
 var peersMessage = document.getElementById("peer-message");
@@ -45,7 +93,10 @@ function make_connection()
         peersMessage.textContent = data;
     });
     let peersDiv = document.getElementById('peer-div');
-    peersDiv.style.display = "block";
+    let userDiv = document.getElementById('user-div');
+    peersDiv.style.display = "flex";
+    userDiv.style.display = "flex";
+    callBtn.style.display = "block";
     title.textContent = "Send a message!";
     button.textContent = "Send!"
     connected = true;
